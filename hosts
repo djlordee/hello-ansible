@@ -1,0 +1,23 @@
+#
+# Fichier contenant les ordinateurs. On les définit dans le groupe [raspberries]
+#
+# Deux techniques utilisées ici. Une ou les ordinateurs sont dans un groupe. Par défaut, les variables utilisées par Ansible sont celles
+# définies dans le bloc [raspberries:vars] plus bas dans le fichier
+#
+# L'autre technique - On va faire un "override" pour un ordinateur spécifique
+#
+[raspberries]
+192.168.xyz.zxy
+192.168.abc.cba
+192.168.def.fed ansible_ssh_user=code_utilisateur_pour_ce_pi ansible_ssh_pass=mot_de_passe_pour_ce_pi
+
+#
+# Vous pouvez assigner des variables utilisables par Ansible pour l'ensemble des ordinateurs du groupe [raspberries]
+#
+# Ici, on suppose que tous les ordinateurs du groupe [raspberries] ont le même code utilisateur et le même mot de passe.
+#
+[raspberries:vars]
+ansible_connection=ssh
+ansible_ssh_user=code_utilisateur_pi
+ansible_ssh_pass=mot_de_passe_pi
+
